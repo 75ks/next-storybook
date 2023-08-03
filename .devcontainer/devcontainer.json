@@ -9,7 +9,7 @@
   // VSCodeのルートディレクトリ
   "workspaceFolder": "/app",
   // コンテナからホストに転送するポートリスト
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 6006],
   // VSCodeの設定等
   "customizations": {
     "vscode": {

@@ -13,5 +13,5 @@ RUN npm install
 # プロジェクトのソースファイルをコピー
 COPY . .
 
-# プロジェクトを実行
-CMD ["npm", "run", "dev"]
+# プロジェクトを実行(Next.js & Storybook)
+CMD ["npm", "run", "dev:both"]
