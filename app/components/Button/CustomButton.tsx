@@ -3,15 +3,21 @@ interface Props {
   label: string;
   /** 非活性にするか */
   disabled?: boolean;
-  //** ボタンのサイズ */
-  size?: 'small' | 'medium' | 'large';
-  //** ボタンの色 */
-  color?: 'blue' | 'red' | 'green' | 'gray';
+  /** ボタンのサイズ */
+  size?: "small" | "medium" | "large";
+  /** ボタンの色 */
+  color?: "blue" | "red" | "green" | "gray";
   /** クリックイベント */
-  onClick?: () => void;
+  onClick: () => void;
 }
 
-export const CustomButton: React.FC<Props> = (props: Props) => {
+export const CustomButton: React.FC<Props> = ({
+    label,
+    disabled = false,
+    size = "medium",
+    color = "blue",
+    onClick
+}: Props) => {
   const sizeClasses = {
     small: "px-2 py-1 text-sm",
     medium: "px-4 py-2",
@@ -24,15 +30,16 @@ export const CustomButton: React.FC<Props> = (props: Props) => {
     gray: "enabled:bg-gray-400 enabled:hover:bg-gray-300",
   };
 
-  const sizeClass = props.size ? sizeClasses[props.size] : sizeClasses.medium;
-  const colorClass = props.color ? colorClasses[props.color] : colorClasses.blue;
+  const sizeClass = sizeClasses[size];
+  const colorClass = colorClasses[color];
 
   return (
     <button 
       className={`${sizeClass} ${colorClass} disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold rounded`}
-      disabled={props.disabled}
+      disabled={disabled}
+      onClick={onClick}
     >
-      { props.label }
+      { label }
     </button>
   )
 }
